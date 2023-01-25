@@ -1,0 +1,44 @@
+server:
+  port: 8889
+
+spring:
+  application:
+    name: blog_admin
+
+  datasource:
+    url: jdbc:mysql://43.139.20.203:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: myblog
+    password: 1203604968
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      max-lifetime: 500000
+      maximum-pool-size: 20
+      minimum-idle: 3
+
+  redis:
+    host: 43.139.20.203
+    port: 6379
+    password: 1203604968
+    database: 1
+    timeout: 500000ms
+
+
+  #  mvc:
+#    static-path-pattern: /static/**
+
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 2MB
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      table-prefix: ms_
+
+qiniu:
+  accessKey: "2Czpuo-ZVJ-m5lnCJNA1bsBlm54QKyxnXBVGqKQ2"
+  accessSecretKey: "B-0nw8rKmQHunF5JGuf9TKK-v7s5QxwfvCr1FijK"

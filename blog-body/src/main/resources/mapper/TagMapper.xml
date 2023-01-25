@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xf.dao.mapper.TagMapper">
+
+    <select id="findTagsByArticleId" parameterType="long" resultType="com.xf.dao.pojo.Tag">
+        select id, avatar, tag_name as tagName
+        from ms_tag
+        where id in (
+            select tag_id from ms_article_tag where article_id=#{articleId}
+            )
+    </select>
+
+    <select id="findHotTags" parameterType="int" resultType="com.xf.dao.pojo.Tag">
+        select tag_id as id, avatar, tag_name as tagName
+        from ms_article_tag, ms_tag
+        where ms_article_tag.tag_id = ms_tag.id
+        group by tag_id
+        order by count(0) desc
+        limit #{limit}
+    </select>
+
+</mapper>
