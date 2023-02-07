@@ -6,9 +6,9 @@ spring:
     name: blog_admin
 
   datasource:
-    url: jdbc:mysql://43.139.20.203:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
-    username: myblog
-    password: 1203604968
+    url: jdbc:mysql://*********:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: *******
+    password: ********
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 500000
@@ -40,5 +40,5 @@ mybatis-plus:
       table-prefix: ms_
 
 qiniu:
-  accessKey: "2Czpuo-ZVJ-m5lnCJNA1bsBlm54QKyxnXBVGqKQ2"
-  accessSecretKey: "B-0nw8rKmQHunF5JGuf9TKK-v7s5QxwfvCr1FijK"
+  accessKey: "*************"
+  accessSecretKey: "****************"
