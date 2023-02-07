@@ -6,9 +6,9 @@ spring:
     name: blog_body
 
   datasource:
-    url: jdbc:mysql://43.139.20.203:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
-    username: myblog
-    password: 1203604968
+    url: jdbc:mysql://*********:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: *******
+    password: *******
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 500000
@@ -17,10 +17,9 @@ spring:
 
 
   redis:
-#    host: 192.168.58.128
-    host: 43.139.20.203
+    host: *********
     port: 6379
-    password: 1203604968
+    password: *********
     database: 0
     timeout: 500000ms
 
@@ -33,10 +32,10 @@ spring:
       max-file-size: 2MB
 
   rabbitmq:
-    host: 43.139.20.203
+    host: ********
     port: 5672
-    username: xinfan
-    password: 1203604968
+    username: **********
+    password: **********
     virtual-host: /
     listener:
       simple:
@@ -51,8 +50,8 @@ spring:
 
   mail:
     host: smtp.qq.com
-    username: 1063899105@qq.com
-    password: obdnwbmghpyubbcf
+    username: **********
+    password: **********
 
 mybatis-plus:
   configuration:
@@ -62,5 +61,5 @@ mybatis-plus:
       table-prefix: ms_
 
 qiniu:
-  accessKey: "2Czpuo-ZVJ-m5lnCJNA1bsBlm54QKyxnXBVGqKQ2"
-  accessSecretKey: "B-0nw8rKmQHunF5JGuf9TKK-v7s5QxwfvCr1FijK"
+  accessKey: "************"
+  accessSecretKey: "****************"
