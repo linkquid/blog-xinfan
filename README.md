@@ -1,5 +1,5 @@
 # blog-xinfan
-### 基于SpringBoot + MP + Redis + MySQL8.0等的博客项目
+### 基于SpringBoot + MP + Redis + MySQL8.0 + Nginx + FTP等的博客项目
 
 项目分为前台项目blog-body、后台管理项目blog-admin两个小项目
 1. 导入myblog.sql文件到mysql数据库
