@@ -6,9 +6,9 @@ spring:
     name: blog_body
 
   datasource:
-    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
-    username: 123456
-    password: 123456
+    url: jdbc:mysql://43.139.20.203:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: myblog
+    password: 1203604968
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 500000
@@ -17,9 +17,10 @@ spring:
 
 
   redis:
-    host: 127.0.0.1
+#    host: 192.168.58.128
+    host: 43.139.20.203
     port: 6379
-    password: 123456
+    password: 1203604968
     database: 0
     timeout: 500000ms
 
@@ -31,40 +32,27 @@ spring:
       max-request-size: 20MB
       max-file-size: 2MB
 
-#  rabbitmq:
-#    host: 43.139.20.203
-##    host: 120.77.156.91
-#    username: xinfan
-#    password: 123456
-#    virtual-host: /
-#    port: 5672
-#    listener:
-#      simple:
-#        #消费者最小数量
-#        concurrency: 10
-#        #消费者最大数量
-#        max-concurrency: 10
-#        #限制消费者每次只能处理N条信息
-#        prefetch: 1
-#        #被拒绝后是否重新进入队列
-#        auto-startup: true
-#      template:
-#        retry:
-#          #发布重试，default false
-#          enabled: true
-#          #重试时间
-#          initial-interval: 1000ms
-#          #重试最大次数
-#          max-attempts: 3
-#          #重试最大间隔
-#          max-interval: 10000ms
-#          #再次重试的间隔时间倍数
-#          multiplier: 1
+  rabbitmq:
+    host: 43.139.20.203
+    port: 5672
+    username: xinfan
+    password: 1203604968
+    virtual-host: /
+    listener:
+      simple:
+        #消费者最小数量
+        concurrency: 1
+        #消费者最大数量
+        max-concurrency: 5
+        #限制消费者每次只能处理N条信息
+        prefetch: 1
+        #被拒绝后是否重新进入队列
+        auto-startup: true
 
   mail:
     host: smtp.qq.com
-    username: 123456.com
-    password: 123456
+    username: 1063899105@qq.com
+    password: obdnwbmghpyubbcf
 
 mybatis-plus:
   configuration:
@@ -74,5 +62,5 @@ mybatis-plus:
       table-prefix: ms_
 
 qiniu:
-  accessKey: "***************"
-  accessSecretKey: "***************"
+  accessKey: "2Czpuo-ZVJ-m5lnCJNA1bsBlm54QKyxnXBVGqKQ2"
+  accessSecretKey: "B-0nw8rKmQHunF5JGuf9TKK-v7s5QxwfvCr1FijK"

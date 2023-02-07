@@ -25,7 +25,7 @@ public class JWTUtils {
                 .signWith(SignatureAlgorithm.HS256, jwtToken)   //  签发算法、秘钥
                 .setClaims(claims)  //  body数据
                 .setIssuedAt(new Date())    //  签发时间
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60));  //  过期时间1小时
+                .setExpiration(new Date(System.currentTimeMillis() + 12000 * 60 * 60));  //  过期时间1小时
         String token = jwtBuilder.compact();
         return token;
     }

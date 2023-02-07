@@ -1,6 +1,7 @@
 package com.xf.service.impl;
 
 import com.xf.dao.pojo.SysUser;
+import com.xf.mq.MQSender;
 import com.xf.service.EmailService;
 import com.xf.service.SysUserService;
 import com.xf.vo.ErrorCode;
@@ -28,6 +29,9 @@ public class EmailServiceImpl implements EmailService {
     private RedisTemplate<String, String> redisTemplate;
 
     @Autowired
+    private MQSender sender;
+
+    @Autowired
     private SysUserService sysUserService;
 
     @Autowired
@@ -36,15 +40,9 @@ public class EmailServiceImpl implements EmailService {
     @Value("${spring.mail.username}")   //  获取发送账号
     private String adminEmail;
 
+
     @Override
     public Result getCode(String email) throws MessagingException {
-        if (!isEmail(email)) {
-            return Result.fail(10022, "邮箱格式错误！");
-        }
-        SysUser sysUser = sysUserService.findUserByEmail(email);
-        if (sysUser != null) {
-            return Result.fail(ErrorCode.ACCOUNT_EXIST);
-        }
         /**
          * 1.生成code码
          * 2.创建邮件对象
@@ -63,6 +61,19 @@ public class EmailServiceImpl implements EmailService {
         redisTemplate.opsForValue().set("Email:"+email, code, 15 * 60);
         System.out.println(code);
         return Result.success(null);
+    }
+
+    @Override
+    public Result checkRegister(String email) {
+        if (!isEmail(email)) {
+            return Result.fail(10022, "邮箱格式错误！");
+        }
+        SysUser sysUser = sysUserService.findUserByEmail(email);
+        if (sysUser != null) {
+            return Result.fail(ErrorCode.ACCOUNT_EXIST);
+        }
+        sender.sendEmail(email);
+        return Result.success("发送成功！");
     }
 
     /**

@@ -1,0 +1,8 @@
+*.mdb
+*.ldb
+*.sln
+*.config
+Debug/
+Release/
+obj/
+target/

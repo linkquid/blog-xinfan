@@ -29,7 +29,7 @@ public class ArticleController {
     @PostMapping
     @CrossOrigin
     @MyLog(module = "文章", operator = "获取文章列表")
-//    @Cache(expire = 5*60*1000, name = "list_article")
+    @Cache(expire = 10*1000, name = "list_article")
     public Result listArticle(@RequestBody PageParam pageParam) {
         return articleService.listArticle(pageParam);
     }
@@ -39,7 +39,7 @@ public class ArticleController {
      * @return
      */
     @PostMapping("hot")
-//    @Cache(expire = 5*60*1000, name = "hot_article")
+    @Cache(expire = 30*1000, name = "hot_article")
     public Result hotArticle() {
         int limit = 5;
         return articleService.hotArticles(limit);
@@ -49,7 +49,7 @@ public class ArticleController {
      * 展示最新的文章
      * @return
      */
-//    @Cache(expire = 1*60*1000, name = "new_article")
+    @Cache(expire = 5*1000, name = "new_article")
     @PostMapping("new")
     public Result newArticle() {
         int limit = 5;

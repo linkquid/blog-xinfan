@@ -6,9 +6,9 @@ spring:
     name: blog_admin
 
   datasource:
-    url: jdbc:mysql://localhost:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
-    username: 123456
-    password: 123456
+    url: jdbc:mysql://43.139.20.203:3306/myblog?useUnicode=true&characterEncoding=UTF-8&serverTimeZone=UTC
+    username: myblog
+    password: 1203604968
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       max-lifetime: 500000
@@ -16,8 +16,9 @@ spring:
       minimum-idle: 3
 
   redis:
-    host: 127.0.0.1
-    password: 123456
+    host: 43.139.20.203
+    port: 6379
+    password: 1203604968
     database: 1
     timeout: 500000ms
 
@@ -37,3 +38,7 @@ mybatis-plus:
   global-config:
     db-config:
       table-prefix: ms_
+
+qiniu:
+  accessKey: "2Czpuo-ZVJ-m5lnCJNA1bsBlm54QKyxnXBVGqKQ2"
+  accessSecretKey: "B-0nw8rKmQHunF5JGuf9TKK-v7s5QxwfvCr1FijK"

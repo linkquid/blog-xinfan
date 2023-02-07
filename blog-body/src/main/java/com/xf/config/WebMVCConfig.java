@@ -23,7 +23,8 @@ public class WebMVCConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         //  跨越配置
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost")
+                .allowedOrigins("http://43.139.20.203","http://localhost","https://43.139.20.203")
+                .allowedOrigins("https://www.xinfan.fun","http://www.xinfan.fun", "http://xinfan.fun")
                 .allowedHeaders("*")
                 .allowCredentials(true)
                 .allowedMethods("GET","POST","DELETE","PUT","OPTIONS");

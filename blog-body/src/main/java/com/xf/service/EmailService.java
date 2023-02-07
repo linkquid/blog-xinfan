@@ -18,4 +18,11 @@ public interface EmailService {
      */
     Result getCode(String email) throws MessagingException;
 
+    /**
+     * 检查是否满足注册条件
+     * @param email
+     * @return
+     */
+    Result checkRegister(String email);
+
 }

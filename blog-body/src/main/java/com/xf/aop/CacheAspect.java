@@ -8,6 +8,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.Signature;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 import java.time.Duration;
+import java.util.Objects;
 
 /**
  * @author 心烦
@@ -47,14 +49,17 @@ public class CacheAspect {
             Object[] args = point.getArgs();
 
             String params = "";
-            for (int i=0; i<args.length; i++) {
-                if (args[i] != null) {
-                    params += JSON.toJSONString(args[i]);
-                    parameterTypes[i] = args[i].getClass();
-                } else {
-                    parameterTypes[i] = null;
+            if (!Objects.isNull(args)) {
+                for (int i=0; i<args.length; i++) {
+                    if (args[i] != null) {
+                        params += JSON.toJSONString(args[i]);
+                        parameterTypes[i] = args[i].getClass();
+                    } else {
+                        parameterTypes[i] = null;
+                    }
                 }
             }
+
             if (StringUtils.isNotEmpty(params)) {
                 /**
                  * 加密处理

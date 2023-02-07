@@ -60,6 +60,7 @@ public class FtpUtil {
             log.info("存储图片：{}", name);
             boolean isSucceed = ftpClient.storeFile(name, inputStream);
             if (isSucceed){
+                log.info("图片上传成功！");
                 return IMAGE_BASE_URL + name;
             }
 

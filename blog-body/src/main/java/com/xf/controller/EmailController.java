@@ -1,5 +1,6 @@
 package com.xf.controller;
 
+import com.xf.mq.MQSender;
 import com.xf.service.EmailService;
 import com.xf.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class EmailController {
     @GetMapping
     public Result getCode(String email) throws MessagingException {
         System.out.println(email);
-        return emailService.getCode(email);
+        return emailService.checkRegister(email);
     }
 
 

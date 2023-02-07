@@ -46,6 +46,7 @@ public class LoginServiceImpl implements LoginService {
             return Result.fail(ErrorCode.PARAM_ERROR);
         }
         //  2.redis是否存在token？
+
         //  3.不存在，查询user表是否存在？
         SysUser sysUser = sysUserService.findUser(account);
         if (sysUser == null) {
@@ -58,7 +59,7 @@ public class LoginServiceImpl implements LoginService {
         //  4.如果存在，使用jwt生成token
         String token = JWTUtils.createToken(sysUser.getId());
         //  5.token存入redis缓存
-        redisTemplate.opsForValue().set("TOKEN-" + token, JSON.toJSONString(sysUser), 1, TimeUnit.HOURS);
+        redisTemplate.opsForValue().set("TOKEN-" + token, JSON.toJSONString(sysUser), 12, TimeUnit.HOURS);
         return Result.success(token);
     }
 
